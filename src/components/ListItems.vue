@@ -1,11 +1,12 @@
 <template>
   <ul class="list" v-for="item of items">
-    <ListItem :item="item" @deleteItem="deleteItem" />
+    <ListItem :item="item" @deleteItem="deleteItem" @changeDone="changeDone" @openModal="openModal" />
   </ul>
 </template>
 
 <script>
-import ListItem from '@/components/ListItem.vue'
+import ListItem from "@/components/ListItem.vue";
+
 export default {
   components: { ListItem },
   props: {
@@ -15,10 +16,16 @@ export default {
   },
   methods: {
     deleteItem(id) {
-      this.$emit('deleteItem', id)
+      this.$emit("deleteItem", id);
+    },
+    changeDone(id) {
+      this.$emit("changeDone", id);
+    },
+    openModal(id) {
+      this.$emit("openModal", id);
     }
   }
-}
+};
 </script>
 
 <style scoped>
